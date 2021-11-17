@@ -91,18 +91,44 @@
 
             </androidx.cardview.widget.CardView>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvNote3"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="16dp">
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="18dp"
+                app:cardBackgroundColor="#5E5B63"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="4dp"
+                app:contentPadding="8dp">
 
-            </androidx.recyclerview.widget.RecyclerView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="start|center_vertical"
+                    android:fontFamily="@font/notosans_regular"
+                    android:text="capaian "
+                    android:textColor="@color/icons"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvTotal4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:fontFamily="@font/notosans_bold"
+                    android:gravity="center"
+                    android:textColor="@color/icons"
+                    android:textSize="20sp"
+                    tools:text="Rp.500.000" />
+
+            </androidx.cardview.widget.CardView>
 
             <View
                 android:id="@+id/divider2"
                 android:layout_width="match_parent"
-                android:layout_height="5dp"
+                android:layout_height="16dp"
                 android:background="?android:attr/listDivider" />
 
             <com.google.android.material.bottomnavigation.BottomNavigationView

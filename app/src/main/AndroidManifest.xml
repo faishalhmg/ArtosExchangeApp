@@ -10,9 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ArtosExchangeApp">
         <activity
-            android:name=".MoneyCurrencyConverter"
+            android:name=".DetailActivity"
+            android:label="@string/activity_detail"
             android:exported="true"
-            android:value="com.fhmg.artosexchangeapp.MainActivity"/>
+            android:parentActivityName=".MainActivity"/>
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
+        <activity
+            android:name=".MoneyCurrencyConverter">
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.fhmg.artosexchangeapp.MainActivity" />
+        </activity>
         <activity android:name=".create.CreateActivity" />
         <activity android:name=".pengeluaran.PengeluaranActivity">
             <meta-data
@@ -25,9 +36,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.fhmg.artosexchangeapp.MainActivity" />
         </activity>
+        <activity android:name=".create.DompetActivity" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
