@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.greenrobot.greendao'
+
 }
 
 android {
@@ -40,6 +41,7 @@ dependencies {
     implementation 'org.greenrobot:greendao:3.3.0'
     implementation "androidx.viewpager2:viewpager2:1.0.0"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.loopj.android:android-async-http:1.4.9'
 
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
     testImplementation 'junit:junit:4.+'
