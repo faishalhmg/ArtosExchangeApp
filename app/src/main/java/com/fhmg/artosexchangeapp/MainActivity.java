@@ -175,6 +175,7 @@ private DaoSession daoSession;
             @Override
             public void onClick(View v) {
                 showDialogDelete();
+
             }
         });
 
@@ -231,7 +232,6 @@ private DaoSession daoSession;
         int total = 0;
 
         total = getTotal1()-getTotal2();
-
         return total;
     }
     private int getTotal3(){
@@ -294,11 +294,7 @@ private DaoSession daoSession;
         tblDompet.setTanggal(date);
         daoSession.getTblDompetDao().update(tblDompet);
     }
-    public void restartApp () {
-        Intent i = new Intent(getApplicationContext(),MainActivity.class);
-        startActivity(i);
-        finish();
-    }
+
     private void showDialogDelete(){
         AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
         builder1.setMessage("Yakin untuk menghapus Pengingat?");
@@ -316,6 +312,7 @@ private DaoSession daoSession;
 
 
                         dialog.dismiss();
+                        restartApp();
                     }
                 });
 
@@ -331,4 +328,9 @@ private DaoSession daoSession;
         alert11.show();
     }
 
+    public void restartApp() {
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(i);
+        finish();
+    }
 }

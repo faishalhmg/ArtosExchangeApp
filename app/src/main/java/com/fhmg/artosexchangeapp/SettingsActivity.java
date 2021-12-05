@@ -51,6 +51,16 @@ public class SettingsActivity extends AppCompatActivity {
         startActivity(i);
         finish();
     }
+    public void restartApp1() {
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(i);
+        finish();
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        restartApp1();
 
+        return true;
+    }
 
 }

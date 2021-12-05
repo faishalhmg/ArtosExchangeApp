@@ -2,6 +2,7 @@ package com.fhmg.artosexchangeapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -163,5 +164,17 @@ public class MoneyCurrencyConverter extends AppCompatActivity {
             }
 
         });
+
+    }
+    public void restartApp() {
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(i);
+        finish();
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        restartApp();
+
+        return true;
     }
 }

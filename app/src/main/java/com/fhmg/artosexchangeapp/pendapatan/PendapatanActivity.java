@@ -177,5 +177,15 @@ public class PendapatanActivity extends AppCompatActivity
         pendapatanAdapter.notifyDataSetChanged();
         tvTotal2.setText(FunctionHelper.convertRupiah(getTotal()));
     }
+    public void restartApp() {
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(i);
+        finish();
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        restartApp();
 
+        return true;
+    }
 }

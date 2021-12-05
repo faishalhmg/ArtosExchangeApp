@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.fhmg.artosexchangeapp.MainActivity;
 import com.fhmg.artosexchangeapp.R;
 import com.fhmg.artosexchangeapp.SharedPref;
 import com.fhmg.artosexchangeapp.create.CreateActivity;
@@ -154,9 +155,15 @@ public class PengeluaranActivity extends AppCompatActivity
         pengeluaranAdapter.notifyDataSetChanged();
         tvTotal.setText(FunctionHelper.convertRupiah(getTotal()));
     }
+    public void restartApp() {
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(i);
+        finish();
+    }
     @Override
     public boolean onSupportNavigateUp() {
-        finish();
+        restartApp();
+
         return true;
     }
 }

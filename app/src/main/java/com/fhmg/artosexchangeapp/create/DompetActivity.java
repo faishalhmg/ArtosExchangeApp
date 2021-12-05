@@ -86,12 +86,17 @@ public class DompetActivity extends AppCompatActivity implements View.OnClickLis
                             Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(DompetActivity.this, MainActivity.class)
                             .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                    restartApp();
                     finish();
                 }
             }
         });
     }
-
+    public void restartApp() {
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(i);
+        finish();
+    }
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
