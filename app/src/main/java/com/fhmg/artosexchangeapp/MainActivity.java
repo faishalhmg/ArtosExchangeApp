@@ -1,10 +1,12 @@
 package com.fhmg.artosexchangeapp;
 
+import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.RingtoneManager;
@@ -16,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -70,6 +73,8 @@ public class MainActivity extends AppCompatActivity implements EditDialogFragmen
     ImageFilterButton imagebutton;
     @BindView(R.id.imageFilterButton2)
     ImageFilterButton imagebutton3;
+    @BindView(R.id.imageButton2)
+    ImageButton imageButton4;
 
     @BindView(R.id.cardview)
     CardView cardview;
@@ -161,6 +166,17 @@ private DaoSession daoSession;
 
         tvTotal3.setText(FunctionHelper.convertRupiah(getTotal()));
         tvTotal4.setText(FunctionHelper.convertRupiah(getTotal3()));
+        if(getTotal3()==0){
+            imageButton4.setVisibility(View.INVISIBLE);
+        }else{
+            imageButton4.setVisibility(View.VISIBLE);
+        }
+        imageButton4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialogDelete();
+            }
+        });
 
 
     }
@@ -283,4 +299,36 @@ private DaoSession daoSession;
         startActivity(i);
         finish();
     }
+    private void showDialogDelete(){
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
+        builder1.setMessage("Yakin untuk menghapus Pengingat?");
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "Ya",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        /*
+                        Fungsi delete.
+                         */
+                        daoSession.getTblDompetDao().deleteAll();
+
+
+
+                        dialog.dismiss();
+                    }
+                });
+
+        builder1.setNegativeButton(
+                "Tidak",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
+    }
+
 }
