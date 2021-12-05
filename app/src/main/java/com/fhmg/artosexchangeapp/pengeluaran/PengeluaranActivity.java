@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.fhmg.artosexchangeapp.R;
+import com.fhmg.artosexchangeapp.SharedPref;
 import com.fhmg.artosexchangeapp.create.CreateActivity;
 import com.fhmg.artosexchangeapp.edit.EditDialogFragment;
 import com.fhmg.artosexchangeapp.utils.FunctionHelper;
@@ -30,7 +32,7 @@ import butterknife.ButterKnife;
 public class PengeluaranActivity extends AppCompatActivity
         implements PengeluaranAdapter.PengeluaranAdapterCallback,
         EditDialogFragment.EditDialogListener {
-
+    SharedPref sharedpref;
 
     @BindView(R.id.rvNote) RecyclerView rvNote;
     @BindView(R.id.fabAdd) FloatingActionButton fabAdd;
@@ -44,9 +46,15 @@ public class PengeluaranActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        sharedpref = new SharedPref(this);
+        if(sharedpref.loadNightModeState()==true) {
+            setTheme(R.style.darktheme);
+        }
+        else  setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pengeluaran_main);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
         daoSession = DaoHandler.getInstance(this);
 
@@ -59,6 +67,10 @@ public class PengeluaranActivity extends AppCompatActivity
         rvNote.setAdapter(pengeluaranAdapter);
         pengeluaranAdapter.notifyDataSetChanged();
 
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
         tvTotal.setText(FunctionHelper.convertRupiah(getTotal()));
 
         fabAdd.setOnClickListener(view -> startActivity(new Intent(PengeluaranActivity.this, CreateActivity.class)));
@@ -142,5 +154,9 @@ public class PengeluaranActivity extends AppCompatActivity
         pengeluaranAdapter.notifyDataSetChanged();
         tvTotal.setText(FunctionHelper.convertRupiah(getTotal()));
     }
-
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
+    }
 }

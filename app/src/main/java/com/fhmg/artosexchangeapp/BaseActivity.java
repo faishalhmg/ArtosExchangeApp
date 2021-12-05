@@ -6,8 +6,14 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 public class BaseActivity extends Activity {
+    SharedPref sharedpref;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        sharedpref = new SharedPref(this);
+        if(sharedpref.loadNightModeState()==true) {
+            setTheme(R.style.darktheme);
+        }
+        else  setTheme(R.style.AppTheme);
         getMenuInflater().inflate(R.menu.common_menu, menu);
         return true;
     }

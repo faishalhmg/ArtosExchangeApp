@@ -103,15 +103,8 @@ public class EditDialogFragment3 extends DialogFragment implements DatePickerFra
 
         etPengingat.setText(mPengingat);
         etNominal3.setText(String.valueOf(mNominal3));
-        tv_once_date.setText(mDate);
-        btn_once_date.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                DatePickerFragment datePickerFragment = new DatePickerFragment();
-                datePickerFragment.show(getFragmentManager(), DATE_PICKER_TAG);
-            }
-        });
+        tv_once_date.setVisibility(View.INVISIBLE);
+        btn_once_date.setVisibility(View.INVISIBLE);
 
         btnSimpan3.setOnClickListener(new View.OnClickListener() {
             @Override

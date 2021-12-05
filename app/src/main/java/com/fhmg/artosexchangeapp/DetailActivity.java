@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 public class DetailActivity extends AppCompatActivity {
+    SharedPref sharedpref;
 
     TextView tvTitle, tvMessage;
     public static final String EXTRA_TITLE = "extra_title";
@@ -13,6 +14,11 @@ public class DetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        sharedpref = new SharedPref(this);
+        if(sharedpref.loadNightModeState()==true) {
+            setTheme(R.style.darktheme);
+        }
+        else  setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 

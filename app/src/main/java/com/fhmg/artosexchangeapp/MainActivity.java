@@ -44,7 +44,11 @@ import com.fhmg.artosexchangeapp.utils.database.TblDompet;
 import com.fhmg.artosexchangeapp.utils.database.TblPendapatan;
 import com.fhmg.artosexchangeapp.utils.database.TblPengeluaran;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -60,12 +64,13 @@ public class MainActivity extends AppCompatActivity implements EditDialogFragmen
     ImageView imageView;
     @BindView(R.id.imageFilterButton4)
     ImageFilterButton imagebutton1;
-    @BindView(R.id.imageFilterButton5)
+    @BindView(R.id.imageFilterButton3)
     ImageFilterButton imagebutton2;
     @BindView(R.id.imageFilterButton)
     ImageFilterButton imagebutton;
-    @BindView(R.id.switchtheme)
-    Switch btn_switch;
+    @BindView(R.id.imageFilterButton2)
+    ImageFilterButton imagebutton3;
+
     @BindView(R.id.cardview)
     CardView cardview;
 
@@ -74,12 +79,17 @@ public class MainActivity extends AppCompatActivity implements EditDialogFragmen
 private DaoSession daoSession;
 
 
-    SharedPreferences prefs;
+    SharedPref sharedpref;
     private List<TblPendapatan> tblPendapatanList;
     private List<TblPengeluaran> tblPengeluaranList;
     private List<TblDompet> tblDompetList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        sharedpref = new SharedPref(this);
+        if(sharedpref.loadNightModeState()==true) {
+            setTheme(R.style.darktheme);
+        }
+        else  setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
@@ -90,13 +100,12 @@ private DaoSession daoSession;
         imageView.setImageResource(R.drawable.dompet);
 
 
-        SharedPreferences sharedPreferences = getSharedPreferences("sharedPrefs", MODE_PRIVATE);
-        final SharedPreferences.Editor editor = sharedPreferences.edit();
-        final boolean isDarkModeOn = sharedPreferences.getBoolean("isDarkModeOn", false);
-
-        if (getTotal()>=getTotal3()) {//ganti jadi uang dompet target//
-            showNotification(MainActivity.this, getResources().getString(R.string.notification_title), getResources().getString(R.string.notification_message), 110);
+        if (getTotal()>=getTotal3()&&getTotal3()!=0) {//ganti jadi uang dompet target//
+            showNotification(MainActivity.this, getResources().getString(R.string.notification_title), getResources().getString(R.string.notification_message)+", \nTarget Waktu = "+tblDompetList.get(0).getTanggal()+", \nTercapai Pada Tanggal = " + getDateTime(), 110);
         }
+//        else if(getTotal()<getTotal3()&&getTotal3()!=0){
+//            showNotification(MainActivity.this, "Yah, Dompetmu belum mencapai target waktu mu", "Mulai berhemat yuk!"+"\nDompet mu = "+getTotal()+"\nTarget Dompet = "+getTotal3(), 110);
+//        }
 
 
         cardview.setOnClickListener(new View.OnClickListener() {
@@ -142,26 +151,17 @@ private DaoSession daoSession;
                 startActivity(nextActivity);
             }
         });
+        imagebutton3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nextActivity = new Intent(MainActivity.this,SettingsActivity.class);
+                startActivity(nextActivity);
+            }
+        });
 
         tvTotal3.setText(FunctionHelper.convertRupiah(getTotal()));
         tvTotal4.setText(FunctionHelper.convertRupiah(getTotal3()));
-        btn_switch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isDarkModeOn) {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    editor.putBoolean("isDarkModeOn", false);
-                    editor.apply();
 
-                }
-                else {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                    editor.putBoolean("isDarkModeOn", true);
-                    editor.apply();
-
-                }
-            }
-        });
 
     }
     @Override
@@ -226,6 +226,11 @@ private DaoSession daoSession;
         }
         return total;
     }
+    private String getDateTime() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        return dateFormat.format(date);
+    }
     private void showNotification(Context context, String title, String message, int notifId) {
         String CHANNEL_ID = "Channel_1";
         String CHANNEL_NAME = "Navigation channel";
@@ -272,5 +277,10 @@ private DaoSession daoSession;
         tblDompet.setNominal(nominal);
         tblDompet.setTanggal(date);
         daoSession.getTblDompetDao().update(tblDompet);
+    }
+    public void restartApp () {
+        Intent i = new Intent(getApplicationContext(),MainActivity.class);
+        startActivity(i);
+        finish();
     }
 }

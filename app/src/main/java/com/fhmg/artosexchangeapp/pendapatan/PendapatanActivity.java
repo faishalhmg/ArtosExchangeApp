@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.fhmg.artosexchangeapp.MainActivity;
 import com.fhmg.artosexchangeapp.R;
+import com.fhmg.artosexchangeapp.SharedPref;
 import com.fhmg.artosexchangeapp.create.PendapatanCreateActivity;
 import com.fhmg.artosexchangeapp.edit.EditDialogFragment2;
 import com.fhmg.artosexchangeapp.utils.FunctionHelper;
@@ -51,13 +53,18 @@ public class PendapatanActivity extends AppCompatActivity
     private PendapatanAdapter pendapatanAdapter;
     private DaoSession daoSession;
     private List<TblPendapatan> tblPendapatanList;
-    int total_pendapatan;
+
+    SharedPref sharedpref;
     SharedPreferences prefs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        sharedpref = new SharedPref(this);
+        if(sharedpref.loadNightModeState()==true) {
+            setTheme(R.style.darktheme);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pendapatan_main);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
         daoSession = DaoHandler.getInstance(this);
         prefs = this.getSharedPreferences(

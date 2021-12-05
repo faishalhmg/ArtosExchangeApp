@@ -25,6 +25,7 @@ import java.util.HashMap;
 import cz.msebera.android.httpclient.Header;
 
 public class MoneyCurrencyConverter extends AppCompatActivity {
+    SharedPref sharedpref;
     private static final String TAG = MainActivity.class.getSimpleName();
     Spinner sp1,sp2;
     EditText ed1;
@@ -36,8 +37,14 @@ public class MoneyCurrencyConverter extends AppCompatActivity {
     String tow="USD";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        sharedpref = new SharedPref(this);
+        if(sharedpref.loadNightModeState()==true) {
+            setTheme(R.style.darktheme);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_money_currency_converter);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ed1 = findViewById(R.id.txtamount);
         sp1 = findViewById(R.id.spfrom);
         sp2 = findViewById(R.id.spto);
@@ -48,7 +55,7 @@ public class MoneyCurrencyConverter extends AppCompatActivity {
         String[] from = {"IDR"};
         ArrayAdapter ad = new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,from);
         sp1.setAdapter(ad);
-        String[] to = {"USD","Euro","Yen","Yuan","Rupee India"};
+        String[] to = {"USD","EUR","JPY","CNY","CLP","AED"};
         ArrayAdapter ad1 = new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,to);
         sp2.setAdapter(ad1);
         b1.setOnClickListener(new View.OnClickListener() {
@@ -60,31 +67,39 @@ public class MoneyCurrencyConverter extends AppCompatActivity {
                     tow = "USD";
                     getConverter();
 
-                } else if (sp1.getSelectedItem().toString() == "IDR" && sp2.getSelectedItem().toString() == "Euro") {
+                } else if (sp1.getSelectedItem().toString() == "IDR" && sp2.getSelectedItem().toString() == "EUR") {
                     amount = Integer.parseInt(ed1.getText().toString());
                     symbols = "IDR";
                     tow = "EUR";
                     getConverter();
 
-                } else if (sp1.getSelectedItem().toString() == "IDR" && sp2.getSelectedItem().toString() == "Yen") {
+                } else if (sp1.getSelectedItem().toString() == "IDR" && sp2.getSelectedItem().toString() == "JPY") {
                     amount = Integer.parseInt(ed1.getText().toString());
                     symbols = "IDR";
-                    tow = "YEN";
+                    tow = "JPY";
                     getConverter();
 
-                } else if (sp1.getSelectedItem().toString() == "IDR" && sp2.getSelectedItem().toString() == "Yuan") {
+                } else if (sp1.getSelectedItem().toString() == "IDR" && sp2.getSelectedItem().toString() == "CNY") {
                     amount = Integer.parseInt(ed1.getText().toString());
                     symbols = "IDR";
-                    tow = "YUAN";
+                    tow = "CNY";
                     getConverter();
 
-                } else if (sp1.getSelectedItem().toString() == "IDR" && sp2.getSelectedItem().toString() == "Rupee India") {
+                } else if (sp1.getSelectedItem().toString() == "IDR" && sp2.getSelectedItem().toString() == "CLP") {
                     amount = Integer.parseInt(ed1.getText().toString());
                     symbols = "IDR";
-                    tow = "USD";
+                    tow = "CLP";
                     getConverter();
 
                 }
+                else if (sp1.getSelectedItem().toString() == "IDR" && sp2.getSelectedItem().toString() == "AED") {
+                    amount = Integer.parseInt(ed1.getText().toString());
+                    symbols = "IDR";
+                    tow = "AED";
+                    getConverter();
+
+                }
+
             }
 
             private void getConverter() {
@@ -95,7 +110,7 @@ public class MoneyCurrencyConverter extends AppCompatActivity {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                         // Jika koneksi berhasil
-
+                        progressBar.setVisibility(View.INVISIBLE);
                         String result = new String(responseBody);
                         Log.d(TAG, result);
                         try {
@@ -116,7 +131,8 @@ public class MoneyCurrencyConverter extends AppCompatActivity {
 
 
                     } catch (JSONException e) {
-                            e.printStackTrace();
+                            Toast.makeText(getApplicationContext(), e.toString()+"   You have reached maximum 3 limit per minute in free account, Please stop extra hits or upgrade your account. Restriction remove after 1 minute.", Toast.LENGTH_LONG).show();
+
                         }
 
 
@@ -124,8 +140,7 @@ public class MoneyCurrencyConverter extends AppCompatActivity {
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                        progressBar.setVisibility(View.INVISIBLE);
-                        String errorMessage;
+                        progressBar.setVisibility(View.VISIBLE);                        String errorMessage;
                         switch (statusCode) {
                             case 401:
                                 errorMessage = statusCode + " : Bad Request";
