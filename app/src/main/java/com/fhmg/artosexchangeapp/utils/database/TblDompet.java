@@ -48,5 +48,7 @@ public class TblDompet {
     public void setTanggal(String tanggal) {
         this.tanggal = tanggal;
     }
+    
+
 
 }

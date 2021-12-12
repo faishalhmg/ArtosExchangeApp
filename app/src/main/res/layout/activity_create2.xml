@@ -30,6 +30,29 @@
         android:layout_marginTop="16dp"
         android:hint="@string/title_nominal">
 
+        <ImageButton
+            android:id="@+id/btn_once_date3"
+            style="@style/Base.Widget.AppCompat.ImageButton"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@android:drawable/ic_menu_agenda" />
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvPendapatan"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginTop="-8dp"
+            android:layout_marginEnd="106dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/notosans_bold"
+            android:textColor="@color/divider"
+            android:textSize="16sp"
+            tools:text="12/13/2021" />
+
         <EditText
             android:id="@+id/etNominal2"
             android:layout_width="match_parent"

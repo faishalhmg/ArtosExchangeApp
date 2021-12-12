@@ -38,6 +38,28 @@
             android:textSize="16sp"
             android:textColor="@color/primary_text"
             android:fontFamily="@font/notosans_regular" />
+
+        <ImageButton
+            android:id="@+id/btn_once_date2"
+            style="@style/Base.Widget.AppCompat.ImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_agenda" />
+
+        <TextView
+            android:id="@+id/tvDate2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvPendapatan"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginTop="-8dp"
+            android:layout_marginEnd="106dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/notosans_bold"
+            android:textColor="@color/divider"
+            android:textSize="16sp"
+            tools:text="12/13/2021" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -50,4 +72,5 @@
         android:text="@string/title_simpan"
         android:textColor="@android:color/white"
         android:textSize="14sp" />
+
 </LinearLayout>

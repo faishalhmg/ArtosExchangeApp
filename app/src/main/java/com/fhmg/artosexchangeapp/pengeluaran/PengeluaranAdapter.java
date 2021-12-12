@@ -47,9 +47,9 @@ public class PengeluaranAdapter extends
 
         String pengeluaran = item.getPengeluaran();
         int nominal = item.getNominal();
-
+        String date = item.getTanggal();
         holder.tvPengeluaran.setText(pengeluaran);
-
+        holder.tvDate2.setText(date);
         Locale localeID = new Locale("in", "ID");
         NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
         holder.tvNominal.setText(formatRupiah.format(nominal));
@@ -72,6 +72,8 @@ public class PengeluaranAdapter extends
         TextView tvPengeluaran;
         @BindView(R.id.tvNominal)
         TextView tvNominal;
+        @BindView(R.id.tvDate2)
+        TextView tvDate2;
         @BindView(R.id.ivDelete)
         ImageView ivDelete;
 

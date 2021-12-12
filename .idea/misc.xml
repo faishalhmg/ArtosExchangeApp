@@ -13,7 +13,7 @@
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/ArtosExchangeApp/app/src/main/res/layout/activity_create.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/ArtosExchangeApp/app/src/main/res/layout/activity_create2.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/ArtosExchangeApp/app/src/main/res/layout/activity_create3.xml" value="0.33" />
-        <entry key="..\:/Users/lenovo/AndroidStudioProjects/ArtosExchangeApp/app/src/main/res/layout/activity_detail.xml" value="0.19166666666666668" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/ArtosExchangeApp/app/src/main/res/layout/activity_detail.xml" value="0.25" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/ArtosExchangeApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/ArtosExchangeApp/app/src/main/res/layout/activity_money_currency_converter.xml" value="0.22" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/ArtosExchangeApp/app/src/main/res/layout/activity_spalsh__screen.xml" value="0.19322916666666667" />
@@ -27,8 +27,8 @@
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/ArtosExchangeApp/app/src/main/res/layout/fragment_dialog_edit3.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/ArtosExchangeApp/app/src/main/res/layout/fragment_pendapatan.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/ArtosExchangeApp/app/src/main/res/layout/fragment_pengeluaran.xml" value="0.20520833333333333" />
-        <entry key="..\:/Users/lenovo/AndroidStudioProjects/ArtosExchangeApp/app/src/main/res/layout/item_pendapatan.xml" value="0.20520833333333333" />
-        <entry key="..\:/Users/lenovo/AndroidStudioProjects/ArtosExchangeApp/app/src/main/res/layout/item_pengeluaran.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/ArtosExchangeApp/app/src/main/res/layout/item_pendapatan.xml" value="0.33" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/ArtosExchangeApp/app/src/main/res/layout/item_pengeluaran.xml" value="0.33" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/ArtosExchangeApp/app/src/main/res/layout/item_pengingat.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/ArtosExchangeApp/app/src/main/res/layout/pendapatan_main.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/lenovo/AndroidStudioProjects/ArtosExchangeApp/app/src/main/res/layout/pengeluaran_main.xml" value="0.20520833333333333" />

@@ -13,11 +13,14 @@ public class TblPengeluaran {
 
     private String pengeluaran;
     private int nominal;
-    @Generated(hash = 388400954)
-    public TblPengeluaran(Long idTblPengeluaran, String pengeluaran, int nominal) {
+    private String tanggal;
+    @Generated(hash = 1328748510)
+    public TblPengeluaran(Long idTblPengeluaran, String pengeluaran, int nominal,
+            String tanggal) {
         this.idTblPengeluaran = idTblPengeluaran;
         this.pengeluaran = pengeluaran;
         this.nominal = nominal;
+        this.tanggal = tanggal;
     }
     @Generated(hash = 177408923)
     public TblPengeluaran() {
@@ -40,6 +43,13 @@ public class TblPengeluaran {
     public void setNominal(int nominal) {
         this.nominal = nominal;
     }
+    public String getTanggal() {
+        return this.tanggal;
+    }
+    public void setTanggal(String tanggal) {
+        this.tanggal = tanggal;
+    }
+
 
 
 }
