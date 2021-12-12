@@ -19,14 +19,14 @@
             <TextView
                 android:textStyle="bold"
 
-                android:text="Card Title"
+                android:text="Projek TAM"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam"
+                android:text="Anggta Team \nFaishal Hariz Makaarim Gandadipoera \nAbbie syeh Nahri \nDaud Maranatha Purba"
                 android:layout_marginTop="8dp"/>
 
 

@@ -11,14 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ArtosExchangeApp">
+
+
         <activity
             android:name=".SettingsActivity"
             android:exported="true"
             android:label="@string/title_activity_settings"
             android:parentActivityName=".MainActivity" />
+
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".MainActivity" />
+
         <activity
             android:name=".DetailActivity"
             android:exported="true"
@@ -47,8 +51,9 @@
                 android:value="com.fhmg.artosexchangeapp.MainActivity" />
         </activity>
         <activity android:name=".create.DompetActivity" />
+        <activity android:name=".MainActivity"/>
         <activity
-            android:name=".MainActivity"
+            android:name=".Spalsh_Screen"
             android:exported="true"
             android:launchMode="singleTop">
             <intent-filter>

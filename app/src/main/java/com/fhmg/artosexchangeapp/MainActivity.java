@@ -107,10 +107,12 @@ private DaoSession daoSession;
 
         if (getTotal()>=getTotal3()&&getTotal3()!=0) {//ganti jadi uang dompet target//
             showNotification(MainActivity.this, getResources().getString(R.string.notification_title), getResources().getString(R.string.notification_message)+", \nTarget Waktu = "+tblDompetList.get(0).getTanggal()+", \nTercapai Pada Tanggal = " + getDateTime(), 110);
+
+
         }
-//        else if(getTotal()<getTotal3()&&getTotal3()!=0){
-//            showNotification(MainActivity.this, "Yah, Dompetmu belum mencapai target waktu mu", "Mulai berhemat yuk!"+"\nDompet mu = "+getTotal()+"\nTarget Dompet = "+getTotal3(), 110);
-//        }
+        else if(getTotal()<getTotal3()&&getTotal3()!=0&&tblDompetList.get(0).getTanggal()==getDateTime()){
+            showNotification(MainActivity.this, "Yah, Dompetmu belum mencapai target waktu mu", "Mulai berhemat yuk!"+"\nDompet mu = "+getTotal()+"\nTarget Dompet = "+getTotal3(), 110);
+        }
 
 
         cardview.setOnClickListener(new View.OnClickListener() {
@@ -283,6 +285,7 @@ private DaoSession daoSession;
         if (notificationManagerCompat != null) {
             notificationManagerCompat.notify(notifId, notification);
         }
+        daoSession.getTblDompetDao().deleteAll();
     }
 
 
