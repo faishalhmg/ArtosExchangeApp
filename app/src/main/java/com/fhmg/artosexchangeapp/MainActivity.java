@@ -110,7 +110,7 @@ private DaoSession daoSession;
 
 
         }
-        else if(getTotal()<getTotal3()&&getTotal3()!=0&&tblDompetList.get(0).getTanggal()==getDateTime()){
+        else if(getTotal()<getTotal3()&&getTotal3()!=0&&tblDompetList.get(0).getTanggal().equals(getDateTime())){
             showNotification(MainActivity.this, "Yah, Dompetmu belum mencapai target waktu mu", "Mulai berhemat yuk!"+"\nDompet mu = "+getTotal()+"\nTarget Dompet = "+getTotal3(), 110);
         }
 
