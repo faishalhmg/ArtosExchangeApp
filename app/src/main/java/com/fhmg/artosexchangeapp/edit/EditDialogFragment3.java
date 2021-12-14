@@ -112,10 +112,7 @@ public class EditDialogFragment3 extends DialogFragment implements DatePickerFra
                 String pengingat = etPengingat.getText().toString();
                 String nominal3 = etNominal3.getText().toString();
                 String date = tv_once_date.getText().toString();
-                /*
-                Fungsi ini iuntuk mengirim data berupa id, pembelian, dan nominal ke
-                activity/fragment yang di implementasinya.
-                 */
+
                 editDialogListener3.requestUpdate(mId3, pengingat, Integer.parseInt(nominal3),date);
                 getDialog().dismiss();
             }

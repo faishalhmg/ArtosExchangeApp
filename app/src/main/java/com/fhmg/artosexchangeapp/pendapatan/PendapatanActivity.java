@@ -85,10 +85,7 @@ public class PendapatanActivity extends AppCompatActivity
         fabAdd2.setOnClickListener(view -> startActivity(new Intent(PendapatanActivity.this, PendapatanCreateActivity.class)));
     }
 
-    /*
-    Fungsi untuk mengirim data dari adapter ke edit dialog.
-    Disini memanggil EditDialogFragment dengan parameter id, pembelian, dan nominal.
-     */
+
     @Override
     public void onLongClick(int position) {
         long id = tblPendapatanList.get(position).getIdTblPendapatan();
@@ -100,18 +97,14 @@ public class PendapatanActivity extends AppCompatActivity
         editDialogFragment2.show(fm, "dialog_edit");
     }
 
-    /*
-    Fungsi delete data. Sebelum menghapus data ada semacam popup terlebih dahulu agar meyakinkan user.
-     */
+
     @Override
     public void onDelete(int position) {
         String name = tblPendapatanList.get(position).getPendapatan();
         showDialogDelete(position, name);
     }
 
-    /*
-    Fungsi untuk men-totalkan semua nominal yang ada didalam tabel TblPengeluaran.
-     */
+
     private int getTotal(){
         int total = 0;
         for (int i = 0; i < tblPendapatanList.size(); i++){
@@ -121,10 +114,7 @@ public class PendapatanActivity extends AppCompatActivity
         return total;
     }
 
-    /*
-    Fungsi untuk memanggil Alert Dialog. Alert dialog ini berfungsi untuk meyakinkan user kembali
-    apakah datanya ingin dihapus atau tidak.
-     */
+
     private void showDialogDelete(final int position, String name){
         AlertDialog.Builder builder1 = new AlertDialog.Builder(PendapatanActivity.this);
         builder1.setMessage("Yakin untuk menghapus item "+ name + " ?");
@@ -162,11 +152,7 @@ public class PendapatanActivity extends AppCompatActivity
         alert11.show();
     }
 
-    /*
-    Fungsi ini untuk menerima data yang dikirimkan dari EditDialogFragment ke PengeluaranActivity.
-    Data yang dikirimkan dari EditDialogFragment ini ada id, pembelian, dan nominal. Lalu
-    setelah mendapatkan datanya panggil fungsi update dari Greendao.
-     */
+
     @Override
     public void requestUpdate(long id, String pemasukan, int nominal) {
         TblPendapatan TblPendapatan = daoSession.getTblPendapatanDao().load(id);

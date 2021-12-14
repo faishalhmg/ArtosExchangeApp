@@ -91,10 +91,7 @@ public class EditDialogFragment2 extends DialogFragment {
                 String pemasukan = etPemasukan.getText().toString();
                 String nominal2 = etNominal2.getText().toString();
 
-                /*
-                Fungsi ini iuntuk mengirim data berupa id, pembelian, dan nominal ke
-                activity/fragment yang di implementasinya.
-                 */
+
                 editDialogListener2.requestUpdate(mId2, pemasukan, Integer.parseInt(nominal2));
                 getDialog().dismiss();
             }
